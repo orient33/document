@@ -1,25 +1,29 @@
-http://developer.android.com/intl/zh-cn/tools/publishing/app-signing.html#considerations
-apkÇ©ÃûµÄ¹Ù·½ÎÄµµ -- ÊÖ¶¯Ç©Ãû
-1 ÓÃ keytool Éú³ÉË½Ô¿
+##apkç­¾å##
+
+###apkç­¾åçš„å®˜æ–¹æ–‡æ¡£ä¹‹æ‰‹åŠ¨ç­¾å###
+####1 ç”¨ keytool ç”Ÿæˆç§é’¥####
  keytool -genkey -v -keystore release-key.keystore -alias alias_name -keyalg RSA -keysize 2048 -validity 10000
-2 ±àÒëºÃapk...
-3 Ê¹ÓÃjarsignerÇ©Ãû
+####2 ç¼–è¯‘å¥½apk...####
+####3 ä½¿ç”¨jarsignerç­¾å####
  jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore release-key.keystore my.apk alias_name
- ÕâÀïmy.apk»á±»¸²¸ÇÖØĞ´
-4 ÑéÖ¤Ç©Ãû
+ è¿™é‡Œmy.apkä¼šè¢«è¦†ç›–é‡å†™
+####4 éªŒè¯ç­¾å####
   jarsigner -verify -verbose -certs my.apk
-5 4k¶ÔÆë--apk¶ÔÆë
+####5 apkå¯¹é½-4kå¯¹é½####
   zipalign -v 4 my.apk my-aligned.apk
-------------------------------------------------------------------------------------------------------------
-http://blog.csdn.net/dacainiao007/article/details/17661413
-Ç©Ãû¹ı³Ì--aospÔ´Âë /build/tools/signapk/SignApk.java
-Ç©ÃûºóµÄapkÖĞ¶àÁËMETA-INFÎÄ¼ş¼Ğ,ÓĞÈı¸öÎÄ¼ş MANIFEST.MF,CERT.SF,CERT.RSA,
-1 Éú³ÉMANIFEST.MF
-  ±éÀúapk°üÖĞËùÓĞ·ÇÎÄ¼ş¼Ğ·ÇÇ©ÃûÎÄ¼şµÄfile,Öğ¸öÉú³ÉSHA1Êı×ÖÇ©ÃûĞÅÏ¢£¬ÔÙÓÃBase64±àÂë
+###ç­¾åè¿‡ç¨‹###
+
+ç­¾ååçš„apkä¸­å¤šäº†META-INFæ–‡ä»¶å¤¹,æœ‰ä¸‰ä¸ªæ–‡ä»¶ MANIFEST.MF,CERT.SF,CERT.RSA,
+####1 ç”ŸæˆMANIFEST.MF####
+  éå†apkåŒ…ä¸­æ‰€æœ‰éæ–‡ä»¶å¤¹éç­¾åæ–‡ä»¶çš„file,é€ä¸ªç”ŸæˆSHA1æ•°å­—ç­¾åä¿¡æ¯ï¼Œå†ç”¨Base64ç¼–ç 
   private static Manifest addDigestsToManifest(JarFile jar)
-2 Éú³ÉCERT.SFÎÄ¼ş
-  ¶ÔÓÚ1Éú³ÉµÄMANIFEST.MF£¬Ê¹ÓÃ SHA1-RSAËã·¨,ÓÃË½Ô¿Ç©Ãû
+####2 ç”ŸæˆCERT.SFæ–‡ä»¶####
+  å¯¹äº1ç”Ÿæˆçš„MANIFEST.MFï¼Œä½¿ç”¨ SHA1-RSAç®—æ³•,ç”¨ç§é’¥ç­¾å
   Signature signature = Signature.getInstance("SHA1withRSA");
   .......
-3 Éú³ÉCERT.RSAÎÄ¼ş
-  CERT.RSA±£´æÁË¹«Ô¿ºÍËù²ÉÓÃµÄ¼ÓÃÜËã·¨µÈĞÅÏ¢
+####3 ç”ŸæˆCERT.RSAæ–‡ä»¶####
+  CERT.RSAä¿å­˜äº†å…¬é’¥å’Œæ‰€é‡‡ç”¨çš„åŠ å¯†ç®—æ³•ç­‰ä¿¡æ¯
+
+- http://developer.android.com/intl/zh-cn/tools/publishing/app-signing.html#considerations
+- http://blog.csdn.net/dacainiao007/article/details/17661413
+- aospæºç  /build/tools/signapk/SignApk.java
