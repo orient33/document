@@ -67,12 +67,14 @@ AppBarLayout通常包括两个子View:
 上面的AppBarLayout和CollapsingToolbarLayout需要用到此Layout.  
 
 ##参考
-https://developer.android.com/intl/zh-cn/reference/android/support/design/widget/Snackbar.html
-http://www.google.com/design/spec/components/snackbars-toasts.html
-http://www.google.com/design/spec/components
+**http://inthecheesefactory.com/blog/android-design-support-library-codelab/en**   
+https://developer.android.com/intl/zh-cn/reference/android/support/design/widget/Snackbar.html  
+http://www.google.com/design/spec/components/snackbars-toasts.html  
+http://www.google.com/design/spec/components  
 http://www.google.com/design/spec/patterns/navigation-drawer.html  
 CSDN上  
-http://blog.csdn.net/feiduclear_up/article/details/46500865
+http://blog.csdn.net/feiduclear_up/article/details/46500865  
 http://blog.csdn.net/feiduclear_up/article/details/46514791  
 github上   
-http://github.com/liuguangqiang/AndroidDesignSupportSample
+http://github.com/liuguangqiang/AndroidDesignSupportSample  
+https://github.com/nuuneoi/Lab-Android-DesignLibrary
