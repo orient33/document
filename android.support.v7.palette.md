@@ -51,7 +51,20 @@ RGB和HSL可以以一定的公式转换。
             }
         }
     }    
+  然后已经pq队列生成mQuantizedColors
 
+    private List<Swatch> generateAverageColors(Collection<Vbox> vboxes) {
+        ArrayList<Swatch> colors = new ArrayList<Swatch>(vboxes.size());
+        for (Vbox vbox : vboxes) {
+            Swatch color = vbox.getAverageColor();
+            if (!shouldIgnoreColor(color)) {
+                // As we're averaging a color box, we can still get colors which we do not want, so
+                // we check again here
+                colors.add(color);
+            }
+        }
+        return colors;
+    }
 
 4 实例化palette，new Palette(List<Swatch> s)  
   在取样Swatch列表中找出最大频率，并找出最适合做默认主题色的6中Swatch，当然，可能找不到一些主题色。这里会根据颜色的 HSL 中的S，L 来匹配
