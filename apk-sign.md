@@ -11,6 +11,10 @@
   jarsigner -verify -verbose -certs my.apk
 ####5 apk对齐-4k对齐####
   zipalign -v 4 my.apk my-aligned.apk
+####other
+  java -jar signapk.jar platform.x509.pem platform.pk8 MyDemo.apk MyDemo_signed.apk
+  使用平台下的密钥和公钥签名apk
+  
 ###签名过程###
 
 签名后的apk中多了META-INF文件夹,有三个文件 MANIFEST.MF,CERT.SF,CERT.RSA,
