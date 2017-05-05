@@ -111,7 +111,7 @@
   
 ## 3 doSomeWork(){ ##
     ```java
-    ...//更新position
+    //更新position
 	for(Renderer renderer : enabledRenderers) {
 	  renderer.render(posUs, realtimeUs);
 	  ...
@@ -159,6 +159,7 @@
     }
   }
   ```
+
 ## 4 renderer.render ## 
   以Video为例， MediaCodecVideoRenderer
   render()执行其父类 MediaCodecRender的方法
