@@ -147,8 +147,9 @@
 	  handler.removeMessage(DO_SOME_WORK);
 	}
   }
- 
-  scheduleNextWork(){
+  ```
+  ```java
+  void scheduleNextWork(){
     handler.removeMessages(MSG_DO_SOME_WORK);
     long nextOperationStartTimeMs = thisOperationStartTimeMs + intervalMs;
     long nextOperationDelayMs = nextOperationStartTimeMs - SystemClock.elapsedRealtime();
@@ -220,7 +221,7 @@
   {
     ...
 	if (audioTrack.handleBuffer(buffer, bufferPresentationTimeUs)) {//使用AudioTrack播放
-	  codec.releaseOutputBuffer(bufferIndex, false);//这里只释放不渲染surface
+	  codec.releaseOutputBuffer(bufferIndex, false);//这里只释放buffer不渲染surface
 	}
   }
   ```
