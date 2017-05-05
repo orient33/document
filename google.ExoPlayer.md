@@ -109,24 +109,24 @@
   }
   ```
   
-## 3 doSomeWork(){ ##
+## 3 doSomeWork() ##
     ```java
     //更新position
 	for(Renderer renderer : enabledRenderers) {
 	  renderer.render(posUs, realtimeUs);
-	  ...
+	  //...
 	}
-    ...
-	if (allRenderEnded ..&& isLast) {
-	  setState(END)
+    //...
+	if (allRenderEnded && isLast) {
+	  setState(END);
 	  stopRenderers();
 	} else if (BUFFERING) {
-	  boolean isNewlyReady = ...;
+	  boolean isNewlyReady = //...;
 	  if (isNewlyReady) {
 	    setState(READY);
 	  }
 	} else if (READY) {
-	  boolean isStillReady = ...;
+	  boolean isStillReady = //...;
 	  if (!isStillReady) {
 	    setState(BUFFERING);
 		stopRenderers();
@@ -192,7 +192,8 @@
   
 ## 6 drainOutputBuffer(positionUs, elapsedRealtimeUs) ##
 	```java
-	{...
+	{
+	...
     processOutputBuffer(.......); //抽象方法，实际调用 MediaCodecVideoRenderer
 	...
     }
@@ -224,7 +225,7 @@
   }
   ```
   
-  AudioTrack最终调用 android.media.AudioTrack.write(buffer, size, .); //不同SDK_INT调用有差异
+AudioTrack最终调用 android.media.AudioTrack.write(buffer, size, .); //不同SDK_INT调用有差异
 -----------------------------------------------------------------------------
 目前看到这里，发现还需要看下 MediaCodec相关的API。
 还没明白的地方：
