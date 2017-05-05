@@ -148,8 +148,6 @@
 	}
   }
  
-  //...
-
   scheduleNextWork(){
     handler.removeMessages(MSG_DO_SOME_WORK);
     long nextOperationStartTimeMs = thisOperationStartTimeMs + intervalMs;
