@@ -179,7 +179,8 @@
   }
   ```
 ## 5 maybeInitCodec() { //根据格式实例化MediaCoderc ##
-   ```java {
+ ```java
+ {
     ...
 	decoderInfo = getDecoderInfo(mediaCodecSelector, format, drmSessionRequiresSecureDecoder);
 	codec = MediaCodec.createByCodecName(decoderInfo.name); //根据name实例化MediaCodec
@@ -194,9 +195,9 @@
 ## 6 drainOutputBuffer(positionUs, elapsedRealtimeUs) ##
 	```java
 	{
-	...
-    processOutputBuffer(.......); //抽象方法，实际调用 MediaCodecVideoRenderer
-	...
+	  ...
+      processOutputBuffer(.......); //抽象方法，实际调用 MediaCodecVideoRenderer
+	  ...
     }
     ```
 
