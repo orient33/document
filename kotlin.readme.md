@@ -22,7 +22,8 @@ fun Fragment.toast(msg:String, dur:Int = Toast.LENGTH_SHORT){
 ```
 ### 1.4函数式编程 lambda
 ......
-## 2 
+## 2
+
 ### 2.1配置gradle
 1 [anko](https://github.com/Kotlin/anko) kotlin出的用于Android开发的工具 
 
@@ -67,9 +68,13 @@ kotlin提供的with(){} 展开对象
 view.setOnClickListener() {toast("clicked")}
 view.setOnClickListener {toast("clicked")}
 ```
-### 2.6 kotlin Android Extensions
+### 2.6 ~~kotlin Android Extensions~~
+
 当前包括view的绑定, 这个插件自动创建了很多属性来方便直接访问XML中的view,
 优点是不需要依赖其他库,如butterknife..
+
+**过时了**
+
 ### 2.7委托属性
 记T为委托属性的类型,
 
