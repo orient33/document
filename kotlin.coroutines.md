@@ -92,3 +92,16 @@ public fun CoroutineDispatcher.asExecutor(): Executor =
 # 数据流
 1. https://developer.android.google.cn/kotlin/flow?hl=zh-cn
 ## Flow
+
+## StateFlow 和 SharedFlow
+### StateFlow
+类似LiveData 
+StateFlow 和 LiveData 具有相似之处。两者都是可观察的数据容器类，并且在应用架构中使用时，两者都遵循相似模式。
+
+但请注意，StateFlow 和 LiveData 的行为确实有所不同：
+ - StateFlow 需要将初始状态传递给构造函数，而 LiveData 不需要。
+ - 当 View 进入 STOPPED 状态时，LiveData.observe() 会自动取消注册使用方，而从 StateFlow 或任何其他数据流收集数据的操作并不会自动停止。如需实现相同的行为，您需要从 Lifecycle.repeatOnLifecycle 块收集数据流。
+
+ StateFlow 是热数据流，只要该数据流被收集，或对它的任何其他引用在垃圾回收根中存在，该数据流就会一直存于内存中。使用 shareIn 运算符将冷数据流变为热数据流。
+### SharedFlow
+shareIn 函数会返回一个热数据流 SharedFlow，此数据流会向从其中收集值的所有使用方发出数据。SharedFlow 是 StateFlow 的可配置性极高的泛化数据流。
