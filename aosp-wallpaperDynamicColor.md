@@ -1,6 +1,7 @@
-# androidS+上设置壁纸流程
+# androidS+上设置壁纸动态颜色流程
 
 代码. https://github.com/LineageOS/android_packages_apps_WallpaperPicker2.git
+ 以及反编译 google pixel 4上的 WallpaperPickerGoogleRelease.apk (com.google.android.apps.wallpaper)
 ## 一 . 以 图片设壁纸为例
  1 从设置的dialog定位， 文案 “为以下屏幕设置壁纸”-- 主屏幕 
 定位到 dialog类 src/com/android/wallpaper/picker/SetWallpaperDialogFragment.java
@@ -94,11 +95,19 @@ hmm ------这里没有反编译成功--需要看smali语言了--todo
 
 
 ### pixel4上adb获取的值
-设置基本颜色时 对应值如下 (共计16个颜色)
+#### 设置基本颜色时 对应值如下 (共计16个颜色)
 adb shell settings get secure theme_customization_overlay_packages
 
 {"_applied_timestamp":1667999716195,"android.theme.customization.color_index":"1","android.theme.customization.system_palette":"1A73E8","android.theme.customization.accent_color":"1A73E8","android.theme.customization.color_source":"preset","android.theme.customization.theme_style":"TONAL_SPOT"}
-
 {"_applied_timestamp":1667999709676,"android.theme.customization.color_index":"5","android.theme.customization.system_palette":"FFB2B5","android.theme.customization.accent_color":"FFB2B5","android.theme.customization.color_source":"preset","android.theme.customization.theme_style":"RAINBOW"}
+{"_applied_timestamp":1668049388324,"android.theme.customization.color_index":"12","android.theme.customization.system_palette":"FFEEB2","android.theme.customization.accent_color":"FFEEB2","android.theme.customization.color_source":"preset","android.theme.customization.theme_style":"FRUIT_SALAD"}
+如上 16个颜色对应index [1, 16], 有3种style， source都是preset
 
 将此值put一下 即可避免壁纸应用时Activity的重启
+#### 设置壁纸颜色时候
+{"_applied_timestamp":1668049946407,"android.theme.customization.color_index":"1","android.theme.customization.color_source":"home_wallpaper","android.theme.customization.theme_style":"TONAL_SPOT","android.theme.customization.color_both":"0"}
+{"_applied_timestamp":1668050008279,"android.theme.customization.color_index":"1","android.theme.customization.color_both":"0","android.theme.customization.color_source":"home_wallpaper","android.theme.customization.theme_style":"SPRITZ"}
+{"_applied_timestamp":1668050048489,"android.theme.customization.color_index":"2","android.theme.customization.color_both":"0","android.theme.customization.system_palette":"21272D","android.theme.customization.accent_color":"21272D","android.theme.customization.color_source":"home_wallpaper","android.theme.customization.theme_style":"VIBRANT"}
+{"_applied_timestamp":1668050088691,"android.theme.customization.color_index":"3","android.theme.customization.color_both":"0","android.theme.customization.system_palette":"A9DB72","android.theme.customization.accent_color":"A9DB72","android.theme.customization.color_source":"lock_wallpaper","android.theme.customization.theme_style":"VIBRANT"}
+如上 index 与style均不同， source是home/lock
+这种值put到settings后 每次应用壁纸后Activity都会重启relaunch
