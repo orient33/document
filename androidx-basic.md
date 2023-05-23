@@ -26,4 +26,7 @@ ViewModel经常与LiveData一块使用,
 
 [`ViewModel`](https://developer.android.com/reference/androidx/lifecycle/ViewModel?hl=zh-cn) 对象存在的时间范围是获取 [`ViewModel`](https://developer.android.com/reference/androidx/lifecycle/ViewModel?hl=zh-cn) 时传递给 [`ViewModelProvider`](https://developer.android.com/reference/androidx/lifecycle/ViewModelProvider?hl=zh-cn) 的 [`Lifecycle`](https://developer.android.com/reference/androidx/lifecycle/Lifecycle?hl=zh-cn)(Activity or Fragment),
 
+ViewModel得以在Activity销毁重建可复用在于
+Activity.onRetainNonConfigurationInstance() -- 销毁前在onStop后-onDestory前调用了这个
+Activity.getLastNonConfigurationInstance()  -- 第二个Activity实例创建时调用返回了viewModelStore,包含VM的map
 
